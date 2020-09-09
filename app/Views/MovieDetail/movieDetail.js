@@ -7,24 +7,31 @@ export default {
         SelectedPageService.getInstance().updateSelectedPage("Home");
     },
 
-    computed: {},
-
     props: {
         id: {type: String},
-        picture: {type: String},
-        rating: {type: Number},
+        image: {type: String},
+        rank: {type: Number},
+        imDbRating: {type: Number},
         title: {type: String},
+        crew: {type: String,},
+        year: {type: String,},
+        imDbRatingCount: {type: String,},
         tags: {type: Array},
     },
 
     beforeMount() {
     },
 
+    computed: {},
+
     data() {
-        return {}
+        return {
+            crewMembers: []
+        }
     },
     methods: {
         loaded() {
+            this.crewMembers = this.crew.split(',');
         },
 
         onDrawerButtonTap() {
