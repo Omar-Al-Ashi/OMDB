@@ -1,10 +1,13 @@
 <template lang="html">
     <FlexboxLayout backgroundColor="#faebd7" height="200" width="100%" @tap="movieCardClicked(id)">
-        <Image :src="picture" height="100" width="100" backgroundColor="aqua"/>
+        <Image :src="picture" height="100" width="100" backgroundColor="aqua"
+               loadMode="async"
+               :useCache="true"
+               stretch="aspectFill"/>
 
-        <FlexboxLayout flexDirection="column" justifyContent="space-around">
-            <Label :text="title" class="text"/>
-            <Label :text="score" class="text"/>
+        <FlexboxLayout flexDirection="column" justifyContent="space-around" padding="0 10">
+            <Label :text="title" class="primary-text"/>
+            <Label :text="score" class="secondary-text"/>
         </FlexboxLayout>
     </FlexboxLayout>
 </template>
@@ -37,8 +40,13 @@
 </script>
 
 <style lang="css" scoped>
-    .text {
+    .primary-text {
         font-size: 20;
         color: #0F336D;
+    }
+
+    .secondary-text {
+        font-size: 18;
+        color: #103791;
     }
 </style>
