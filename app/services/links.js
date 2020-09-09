@@ -1,3 +1,3 @@
 export default {
-    primaryDomain: "https://imdb-api.com/api"
+    primaryDomain: "https://imdb-api.com/en/API/MostPopularMovies/"
 }

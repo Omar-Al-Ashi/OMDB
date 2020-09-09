@@ -2,7 +2,7 @@ import links from './links'
 
 const httpModule = require("tns-core-modules/http");
 
-class http {
+export default class http {
     /**
      * gets the primaryDomain and adds the URN and queryStrings if any is available
      * @param URN
@@ -43,7 +43,7 @@ class http {
      * @constructor
      */
     static GET(url, headers) {
-        headers = headers || {}
+        headers = headers || {};
         return fetch(url, {
             method: 'GET',
             headers: {
@@ -133,4 +133,3 @@ class http {
     }
 }
 
-export default http
