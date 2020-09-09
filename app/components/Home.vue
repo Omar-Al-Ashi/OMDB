@@ -5,23 +5,32 @@
             Use the NavigationButton as a side-drawer button in Android
             because ActionItems are shown on the right side of the ActionBar
             -->
-            <NavigationButton ios:visibility="collapsed" icon="res://menu" @tap="onDrawerButtonTap"></NavigationButton>
-            <!-- 
+            <NavigationButton ios:visibility="collapsed" icon="res://menu"
+                              @tap="onDrawerButtonTap"></NavigationButton>
+            <!--
             Use the ActionItem for IOS with position set to left. Using the
             NavigationButton as a side-drawer button in iOS is not possible,
             because its function is to always navigate back in the application.
             -->
-            <ActionItem icon="res://navigation/menu" 
-                android:visibility="collapsed" 
-                @tap="onDrawerButtonTap"
-                ios.position="left">
+            <ActionItem icon="res://navigation/menu"
+                        android:visibility="collapsed"
+                        @tap="onDrawerButtonTap"
+                        ios.position="left">
             </ActionItem>
             <Label class="action-bar-title" text="Home"></Label>
         </ActionBar>
 
         <GridLayout class="page-content">
-            <Label class="page-icon fa" text.decode="&#xf015;"></Label>
-            <Label class="page-placeholder" :text="message"></Label>
+            <ListView for="(item, index) in items"
+                      separatorColor="transparent">
+                <v-template>
+                    <movieCard @clicked="movieCardClicked"
+                               :id="item.id"
+                               :picture="item.picture"
+                               :score="item.age"
+                               :title="item.title"/>
+                </v-template>
+            </ListView>
         </GridLayout>
 
     </Page>
