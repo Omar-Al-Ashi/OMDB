@@ -3,14 +3,14 @@ export default {
         id: {
             type: String
         },
-        picture: {
+        image: {
             type: String
         },
         title: {
             type: String
         },
-        rating: {
-            type: Number
+        rank: {
+            type: String
         }
     },
     data() {
