@@ -1,0 +1,23 @@
+// Start custom common variables
+@import '../../app-variables';
+// End custom common variables
+// Custom styles
+.primary-text{
+  color: white;
+  font-size: 20;
+}
+
+.secondary-text{
+  color: white;
+  font-size: 14;
+}
+
+.header{
+  background-color: $night-dark;
+  border-radius: 20;
+}
+
+.footer{
+  background-color: $night-light;
+  border-radius: 20;
+}

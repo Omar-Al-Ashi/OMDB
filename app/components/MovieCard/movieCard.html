@@ -1,0 +1,17 @@
+<FlexboxLayout height="200" width="100%" @tap="movieCardClicked(id)"
+               borderRadius="20"
+               marginTop="15"
+               backgroundColor="#008b8b">
+    <Image :src="picture" height="100" width="100"
+           loadMode="async"
+           :useCache="true"
+           stretch="aspectFill"/>
+
+    <FlexboxLayout flexDirection="column" justifyContent="space-around" padding="0 10">
+        <Label :text="title" class="primary-text"/>
+        <StackLayout orientation="horizontal">
+            <Label text="OMDB Rating: " class="secondary-text"/>
+            <Label :text="`${rating}/10`" class="secondary-text"/>
+        </StackLayout>
+    </FlexboxLayout>
+</FlexboxLayout>
