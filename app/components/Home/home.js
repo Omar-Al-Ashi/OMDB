@@ -1,6 +1,6 @@
 import * as utils from "~/shared/utils";
 import SelectedPageService from "../../shared/selected-page-service";
-import generatedData from "../../../generated.json"
+import generatedData from "../../../moviesData.json"
 import movieCard from "../movieCard";
 import movieDetail from "../../Views/movieDetail";
 
@@ -11,11 +11,6 @@ export default {
 
     mounted() {
         SelectedPageService.getInstance().updateSelectedPage("Home");
-    },
-
-    computed: {
-        message() {
-        }
     },
 
     beforeMount() {
