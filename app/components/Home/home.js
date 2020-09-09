@@ -3,6 +3,7 @@ import SelectedPageService from "../../shared/selected-page-service";
 import generatedData from "../../../moviesData.json"
 import movieCard from "../movieCard";
 import movieDetail from "../../Views/movieDetail";
+import API from '../../services/API'
 
 export default {
     components: {
@@ -35,10 +36,11 @@ export default {
          * @param callback
          */
         getMoviesData(callback) {
-            setTimeout(() => {
+
+            API.getMostPopularMovies({}, (moviesList) => {
                 this.isLoading = false;
-                callback(generatedData)
-            }, 1500)
+                callback(moviesList.items)
+            });
         },
 
         /**
@@ -52,10 +54,13 @@ export default {
             this.$navigateTo(movieDetail, {
                 props: {
                     id: movieData.id,
-                    picture: movieData.picture,
-                    rating: movieData.rating,
+                    image: movieData.image,
+                    rank: movieData.rank,
                     title: movieData.title,
-                    tags: movieData.tags,
+                    imDbRating: movieData.imDbRating,
+                    crew: movieData.crew,
+                    year: movieData.year,
+                    imDbRatingCount: movieData.imDbRatingCount,
                 }
             })
         },
