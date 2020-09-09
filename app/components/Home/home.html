@@ -28,9 +28,10 @@
                 <movieCard @clicked="movieCardClicked"
                            padding="5 10"
                            :id="item.id"
-                           :picture="item.picture"
-                           :rating="item.rating"
-                           :title="item.title"/>
+                           :image="item.image"
+                           :rank="item.rank"
+                           :title="item.title"
+                           :crew="item.crew"/>
             </v-template>
         </ListView>
     </GridLayout>
