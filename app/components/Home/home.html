@@ -22,7 +22,7 @@
     <GridLayout class="page-content" backgroundColor="#00dddd">
         <ActivityIndicator color="#0DA3AA" :busy="isLoading"
                            verticalAlignment="center"></ActivityIndicator>
-        <ListView for="(item, index) in items"
+        <ListView for="(item, index) in movieItems"
                   separatorColor="transparent">
             <v-template>
                 <movieCard @clicked="movieCardClicked"

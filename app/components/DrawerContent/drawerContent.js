@@ -20,6 +20,11 @@ export default {
         Settings
     },
     methods: {
+
+        /**
+         * Executed whenever the user clicks on a navigation item
+         * @param component
+         */
         onNavigationItemTap(component) {
             this.$navigateTo(component, {
                 clearHistory: true

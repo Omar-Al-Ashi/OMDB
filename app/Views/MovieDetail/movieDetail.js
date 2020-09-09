@@ -13,8 +13,8 @@ export default {
         id: {type: String},
         picture: {type: String},
         rating: {type: Number},
-        title: {String},
-        tags: {Array},
+        title: {type: String},
+        tags: {type: Array},
     },
 
     beforeMount() {

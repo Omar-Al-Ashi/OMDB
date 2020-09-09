@@ -16,21 +16,24 @@ export default {
     beforeMount() {
         this.isLoading = true;
         this.getMoviesData((movies) => {
-            this.items = movies
+            this.movieItems = movies
         })
     },
 
     data() {
         return {
-            items: null,
+            movieItems: null,
             isLoading: false
         }
     },
     methods: {
         loaded() {
-
         },
 
+        /**
+         * Simulates getting data from an API and returns the data as a callback
+         * @param callback
+         */
         getMoviesData(callback) {
             setTimeout(() => {
                 this.isLoading = false;
@@ -38,6 +41,11 @@ export default {
             }, 1500)
         },
 
+        /**
+         * Executed whenever the user clicks on a card
+         * It routes to movieDetails view with props
+         * @param id
+         */
         movieCardClicked(id) {
             let movieData = this.getSpecificMovieInfo(id);
 
@@ -52,9 +60,14 @@ export default {
             })
         },
 
+        /**
+         * Loops over the movieItems to get a specific movie info
+         * @param id
+         * @returns {*}
+         */
         getSpecificMovieInfo(id){
             let movieItem = null;
-            this.items.forEach(item => {
+            this.movieItems.forEach(item => {
                 if (item.id === id) {
                     movieItem = item
                 }
@@ -62,6 +75,10 @@ export default {
             return movieItem
         },
 
+        /**
+         * Executed when the user clicks on the drawer button
+         * opens the drawer
+         */
         onDrawerButtonTap() {
             utils.showDrawer();
         }
