@@ -21,10 +21,13 @@
         </ActionBar>
 
         <GridLayout class="page-content">
+            <ActivityIndicator color="#0DA3AA" :busy="isLoading"
+                               verticalAlignment="center"></ActivityIndicator>
             <ListView for="(item, index) in items"
                       separatorColor="transparent">
                 <v-template>
                     <movieCard @clicked="movieCardClicked"
+                               padding="5 10"
                                :id="item.id"
                                :picture="item.picture"
                                :score="item.age"
@@ -41,6 +44,7 @@
     import SelectedPageService from "../shared/selected-page-service";
     import generatedData from "../../generated.json"
     import movieCard from "./movieCard";
+    import movieDetail from "../Views/movieDetail";
 
     export default {
         components: {
@@ -53,17 +57,20 @@
 
         computed: {
             message() {
-                return "<!-- Page content goes here -->";
             }
         },
 
         beforeMount() {
-            this.items = generatedData;
+            this.isLoading = true;
+            this.getMoviesData((movies) => {
+                this.items = movies
+            })
         },
 
         data() {
             return {
-                items: null
+                items: null,
+                isLoading: false
             }
         },
         methods: {
@@ -71,9 +78,35 @@
 
             },
 
+            getMoviesData(callback) {
+                setTimeout(() => {
+                    this.isLoading = false;
+                    callback(generatedData)
+                }, 1500)
+            },
+
             movieCardClicked(id) {
-                console.log("item clicked with id", id)
-                //    TODO move to another page with props
+                let movieData = this.getSpecificMovieInfo(id);
+
+                this.$navigateTo(movieDetail, {
+                    props: {
+                        id: movieData.id,
+                        picture: movieData.picture,
+                        age: movieData.age,
+                        title: movieData.title,
+                        tags: movieData.tags,
+                    }
+                })
+            },
+
+            getSpecificMovieInfo(id){
+                let movieItem = null;
+                this.items.forEach(item => {
+                    if (item.id === id) {
+                        movieItem = item
+                    }
+                });
+                return movieItem
             },
 
             onDrawerButtonTap() {
